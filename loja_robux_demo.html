@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loja de Robux — Demonstração</title>
+<style>
+:root{--yellow:#fff000;--bg:#101114;--panel:#1b1c20;--muted:#a6a6ad;--line:#35363c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f7f7f8;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{height:76px;background:#050505;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid #282828}
+.brand{font-size:28px;font-weight:950;letter-spacing:-1px;color:var(--yellow)}.menu{font-size:25px;color:white}
+.login{background:var(--yellow);color:#080808;border:0;border-radius:28px;padding:13px 24px;font-weight:800;font-size:16px}
+.search{margin:18px auto;background:#191a1e;border:1px solid #38393e;border-radius:16px;padding:16px 20px;color:#aaa;max-width:960px}
+main{max-width:960px;margin:0 auto;padding:0 20px 34px}
+.hero{height:190px;border-radius:8px;background:linear-gradient(120deg,#142e42,#345d7a 48%,#1b2939);display:flex;align-items:center;justify-content:center;text-align:center;margin:16px 0 12px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;width:180px;height:180px;border:18px solid #ffffff12;transform:rotate(25deg);border-radius:35px}.hero:before{left:-55px;top:45px}.hero:after{right:-40px;top:-60px}
+.hero h1{font-size:clamp(36px,9vw,68px);margin:0;font-weight:1000;letter-spacing:-3px;text-shadow:0 3px 10px #0008;z-index:1}.hero small{display:block;font-size:14px;letter-spacing:0;font-weight:600}
+.trust{display:flex;justify-content:space-around;gap:8px;background:#191a1e;border:1px solid #303137;border-radius:12px;padding:14px 6px;color:#bdbdc2;font-size:14px}
+h2{font-size:20px;margin:34px 0 16px}.step{display:inline-grid;place-items:center;background:var(--yellow);color:#090909;width:34px;height:34px;border-radius:50%;font-weight:950;margin-right:8px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.package{min-height:116px;background:linear-gradient(135deg,#171719,#0b0b0c);border:1px solid #3b3b40;border-radius:18px;color:white;text-align:left;padding:16px;display:grid;grid-template-columns:52px 1fr;align-items:start;position:relative;cursor:pointer}
+.package.selected{border:2px solid var(--yellow);padding:15px;box-shadow:0 0 0 2px #fff00022}
+.coin{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffe68a,#b77b18);color:#71450a;font-size:24px;border:3px solid #f9d36b}
+.amount{font-size:25px;font-weight:950;line-height:1.05}.unit{color:#999;font-size:15px;font-weight:800;letter-spacing:.5px}.price{grid-column:2;text-align:right;font-size:21px;font-weight:900;color:#c9e7f5;margin-top:8px}
+.bottom{position:sticky;bottom:0;background:#1d1d1f;border-top:1px solid #333;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px -20px 0}
+#chosen{color:#aaa}.continue{background:var(--yellow);border:0;border-radius:14px;padding:16px 24px;font-size:17px;font-weight:900;color:#111;cursor:pointer}.continue:disabled{background:#39393b;color:#999;cursor:not-allowed}
+.hidden{display:none!important}
+.checkout{background:#1c1c1e;padding:24px 20px;border-radius:4px;margin-top:10px;text-align:center}
+.checkout h1{font-size:clamp(28px,6vw,42px);line-height:1.15;margin:10px 0 40px}.lead{font-size:20px;color:#ddd;margin-bottom:28px}
+.pix{background:#050505;padding:24px 18px;max-width:640px;margin:auto}.pix h3{font-size:21px;margin:8px 0}.pix p{font-size:18px;line-height:1.5;color:#ddd}.total{font-size:24px;font-weight:900;color:#fff000}
+.fakecode{background:#161616;border:1px dashed #777;padding:13px;border-radius:8px;color:#c5c5c5;word-break:break-all;font-size:13px}
+.copy{background:var(--yellow);border:0;border-radius:30px;padding:15px;width:100%;font-weight:900;font-size:17px;margin:14px 0;cursor:pointer}
+.qr{width:190px;height:190px;margin:18px auto;background:repeating-linear-gradient(45deg,#fff 0 7px,#111 7px 12px);display:grid;place-items:center;border:12px solid white;color:#111;font-weight:1000;text-align:center}
+.notice{font-size:13px!important;color:#ffdf63!important}
+.back{background:transparent;color:#fff;border:1px solid #777;border-radius:12px;padding:12px 18px;margin:18px 0;cursor:pointer}
+@media(max-width:420px){.trust{font-size:11px}.package{min-height:106px;padding:12px;grid-template-columns:44px 1fr}.package.selected{padding:11px}.coin{width:38px;height:38px}.amount{font-size:22px}.price{font-size:18px}.bottom{padding:12px}.continue{padding:14px 18px}}
+</style>
+</head>
+<body>
+<header><div class="menu">☰</div><div class="brand">LOJA PIX</div><button class="login">◎ Entrar</button></header>
+<div class="search">⌕ &nbsp; Busque jogos, gift cards e mais</div>
+<main>
+<section id="store">
+ <div class="hero"><h1>ROBLOX<small>LOJA DE CRÉDITOS • DEMONSTRAÇÃO</small></h1></div>
+ <div class="trust"><span>✓ Compra demonstrativa</span><span>⚡ Simulação</span><span>▣ Sem cobrança</span></div>
+ <h2><span class="step">1</span> ESCOLHA SEU PACOTE</h2>
+ <div class="grid" id="packages"></div>
+ <div class="bottom"><span id="chosen">Nenhum pacote escolhido</span><button class="continue" id="continue" disabled>CONTINUAR ›</button></div>
+</section>
+<section id="payment" class="hidden">
+ <div class="checkout">
+  <h1>Quase lá! Seu pedido foi criado com sucesso.</h1>
+  <div class="lead">Confira os dados da simulação abaixo.</div>
+  <div class="pix">
+   <h3>Pagamento via Pix — demonstração</h3>
+   <p>Valor: <span class="total" id="total">R$ 0,00</span></p>
+   <hr style="border-color:#555">
+   <h3>Pix Copia e Cola</h3>
+   <p>Em uma loja real, o código Pix deve ser gerado individualmente por um provedor de pagamentos autorizado.</p>
+   <div class="fakecode">DEMO-PIX-NAO-PAGAVEL — nenhum pagamento será realizado</div>
+   <button class="copy" id="copy" type="button">▢ Copiar texto de demonstração</button>
+   <hr style="border-color:#555">
+   <h3>QR Code de demonstração</h3>
+   <div class="qr">QR<br>DEMO<br>SEM VALOR</div>
+   <p class="notice">Este QR não é um código Pix e não pode ser usado para pagar. Integre um gateway legítimo para receber pagamentos.</p>
+  </div>
+  <button class="back" id="back">‹ Voltar e escolher outro pacote</button>
+ </div>
+</section>
+</main>
+<script>
+const packs=[
+ [415,25.00],[500,29.90],[1000,59.00],[1149,85.00],[1686,100.00],
+ [2000,117.90],[2316,165.00],[3627,200.00],[5250,294.90]
+];
+let selected=null;
+const fmt=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const grid=document.getElementById('packages');
+packs.forEach(([robux,price],i)=>{
+ const b=document.createElement('button');b.className='package';b.type='button';
+ b.innerHTML=`<span class="coin">⬡</span><span><span class="amount">${robux}</span><br><span class="unit">ROBUX</span></span><span class="price">${fmt(price)}</span>`;
+ b.addEventListener('click',()=>{
+  selected=i;document.querySelectorAll('.package').forEach(x=>x.classList.remove('selected'));
+  b.classList.add('selected');document.getElementById('chosen').textContent=`${robux} Robux — ${fmt(price)}`;
+  document.getElementById('continue').disabled=false;
+ });grid.appendChild(b);
+});
+document.getElementById('continue').addEventListener('click',()=>{
+ if(selected===null)return;
+ document.getElementById('total').textContent=fmt(packs[selected][1]);
+ document.getElementById('store').classList.add('hidden');
+ document.getElementById('payment').classList.remove('hidden');
+ window.scrollTo(0,0);
+});
+document.getElementById('back').addEventListener('click',()=>{
+ document.getElementById('payment').classList.add('hidden');
+ document.getElementById('store').classList.remove('hidden');
+ window.scrollTo(0,0);
+});
+document.getElementById('copy').addEventListener('click',async()=>{
+ const s='DEMO-PIX-NAO-PAGAVEL — nenhum pagamento será realizado';
+ try{await navigator.clipboard.writeText(s);document.getElementById('copy').textContent='Texto de demonstração copiado';}
+ catch(e){document.getElementById('copy').textContent='Código demonstrativo exibido acima';}
+});
+</script>
+</body></html>
